@@ -718,12 +718,6 @@ wget.callbacks.write_to_warc = function(url, http_stat)
   if not item_name then
     error("No item name found.")
   end
-  if status_code == 0
-    or status_code == 429
-    or status_code >= 500 then
-    retry_url = true
-    return false
-  end
   if http_stat["len"] == 0
     and status_code == 200 then
     retry_url = true
@@ -749,6 +743,13 @@ wget.callbacks.write_to_warc = function(url, http_stat)
         return false
       end
     end
+  end
+  if status_code ~= 200
+    and status_code ~= 206
+    and status_code ~= 301
+    and status_code ~= 302 then
+    retry_url = true
+    return false
   end
   if abortgrab then
     print("Not writing to WARC.")
