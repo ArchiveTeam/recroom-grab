@@ -159,7 +159,7 @@ allowed = function(url, parenturl)
   for _, pattern in pairs({
     "([0-9]+)",
     "([0-9a-zA-Z_]+)",
-    "([0-9a-zA-Z_%%%.]+)"
+    "([0-9a-zA-Z_%%%.%-]+)"
   }) do
     for s in string.gmatch(url, pattern) do
       s = urlparse.unescape(s)
