@@ -413,9 +413,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       "",
       "?width=1920",
       "?width=512",
-      "?width=192&cropSquare=true",
-      "?cropSquare=true&width=40&height=40",
-      "?cropSquare=true&width=192&height=192"
+      "?width=192&cropSquare=true"
     }) do
       local image_url = base .. suffix
       ids[string.lower(image_url)] = true
@@ -467,6 +465,8 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
         check("https://rec.net/user/" .. username .. "/events")
         check("https://apim.rec.net/accounts/account/bulk?id=" .. item_value)
         check("https://apim.rec.net/accounts/account/" .. item_value .. "/bio")
+        check("https://api.rec.net/api/playerReputation/v2/bulk?id=" .. item_value)
+        check("https://api.rec.net/api/players/v2/progression/bulk?id=" .. item_value)
         check("https://rooms.rec.net/showcase/" .. item_value)
         check("https://rooms.rec.net/rooms/ownedby/" .. item_value)
         check("https://clubs.rec.net/subscription/subscriberCount/" .. item_value)
