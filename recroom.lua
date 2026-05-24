@@ -412,8 +412,8 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
     for _, suffix in ipairs({
       "",
       "?width=1920",
-      "?width=512",
-      "?width=192&cropSquare=true"
+      --"?width=512",
+      --"?width=192&cropSquare=true"
     }) do
       local image_url = base .. suffix
       ids[string.lower(image_url)] = true
